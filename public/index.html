@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Barcode Okuma</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ürün Okuma</h1>
+            <div class="header-stats">
+                <span id="toplamSatir">0 satır</span>
+                <span id="toplamAdet">0 adet</span>
+            </div>
+        </div>
+
+        <div class="scan-area">
+            <input type="text" inputmode="text" id="barkodInput" placeholder="Barkod okutun..." autofocus>
+            <button id="sorgulaBtn">Sorgula</button>
+        </div>
+
+        <div class="result-area" id="resultArea">
+            <div id="sonuc"></div>
+        </div>
+
+        <div class="liste-area">
+            <h2>Son Okutulanlar</h2>
+            <div id="liste"></div>
+        </div>
+
+        <div class="export-area hidden">
+            <h2>Excel Export</h2>
+            <input type="text" id="dosyaAdi" placeholder="Dosya adı girin...">
+            <button id="exportBtn" class="export-button">Excel İndir</button>
+            <button id="silBtn" class="sil-button">Listeyi Temizle</button>
+        </div>
+    </div>
+
+    <nav class="bottom-menu">
+        <button class="menu-btn active" data-page="okuma">Okuma</button>
+        <button class="menu-btn" data-page="export">Export</button>
+    </nav>
+
+    <div id="adetModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Adet Girin</h3>
+            <input type="number" inputmode="numeric" id="adetInput" placeholder="Adet">
+            <div class="modal-buttons">
+                <button id="adetKaydet" class="modal-btn">Kaydet</button>
+                <button id="adetIptal" class="modal-btn iptal">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
