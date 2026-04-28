@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             liste[seciliIndex].adet = yeniAdet;
             renderListe();
             modal.classList.add('hidden');
+            document.getElementById('barkodInput').focus();
         };
 
         document.getElementById('adetIptal').onclick = () => {
