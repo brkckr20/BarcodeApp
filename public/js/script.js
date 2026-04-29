@@ -1,4 +1,8 @@
-let liste = [];
+let liste = JSON.parse(localStorage.getItem('barkodListe')) || [];
+
+function kaydetListe() {
+    localStorage.setItem('barkodListe', JSON.stringify(liste));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('barkodInput');
@@ -7,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const listeDiv = document.getElementById('liste');
     const menuBtns = document.querySelectorAll('.menu-btn');
 
+    renderListe();
     input.focus();
 
     input.addEventListener('keypress', (e) => {
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 sonuc.innerHTML = `<p><strong>${urun.InventoryName}</strong> (${urun.Barcode})</p>`;
                 renderListe();
+                kaydetListe();
             } else {
                 sonuc.innerHTML = '<p style="color: red;">Ürün bulunamadı</p>';
             }
@@ -104,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const yeniAdet = parseInt(input.value) || 1;
             liste[seciliIndex].adet = yeniAdet;
             renderListe();
+            kaydetListe();
             modal.classList.add('hidden');
             document.getElementById('barkodInput').focus();
         };
@@ -117,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('silBtn')?.addEventListener('click', () => {
         if (confirm('Listeyi temizlemek istediğinize emin misiniz?')) {
             liste = [];
+            kaydetListe();
             renderListe();
         }
     });
@@ -140,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 alert('Kaydedildi: ' + data.file.replace('.xlsx', ''));
                 liste = [];
+                kaydetListe();
                 renderListe();
                 dosyaAdiInput.value = '';
             } else {
