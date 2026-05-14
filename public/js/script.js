@@ -83,16 +83,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="barkod">${item.barkod}</span>
                     <span class="adi">${item.adi}</span>
                 </div>
-                <div class="adet" data-index="${index}">${item.adet}</div>
+                <div class="item-actions">
+                    <span class="adet" data-index="${index}">${item.adet}</span>
+                    <i class="fa-solid fa-trash sil-icon" data-index="${index}" title="Sil"></i>
+                </div>
             </div>
         `).join('');
 
         document.querySelectorAll('.liste-item').forEach(el => {
-            el.addEventListener('click', function() {
+            el.addEventListener('click', function(e) {
+                if (e.target.classList.contains('sil-icon')) return;
                 const idx = parseInt(this.querySelector('.adet').getAttribute('data-index'));
                 acModal(idx);
             });
         });
+
+        document.querySelectorAll('.sil-icon').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.getAttribute('data-index'));
+                seciliIndex = idx;
+                document.getElementById('silModalBaslik').textContent = liste[idx].adi;
+                document.getElementById('silModal').classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('silEvet').onclick = () => {
+            liste.splice(seciliIndex, 1);
+            kaydetListe();
+            renderListe();
+            document.getElementById('silModal').classList.add('hidden');
+            document.getElementById('barkodInput').focus();
+        };
+
+        document.getElementById('silIptal').onclick = () => {
+            document.getElementById('silModal').classList.add('hidden');
+        };
     }
 
     let seciliIndex = 0;

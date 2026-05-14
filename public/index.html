@@ -6,6 +6,7 @@
     <title>Barcode Okuma</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -51,6 +52,17 @@
             <div class="modal-buttons">
                 <button id="adetKaydet" class="modal-btn">Kaydet</button>
                 <button id="adetIptal" class="modal-btn iptal">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="silModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="silModalBaslik"></h3>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">Silmek istediğinize emin misiniz?</p>
+            <div class="modal-buttons">
+                <button id="silEvet" class="modal-btn sil-btn">Evet</button>
+                <button id="silIptal" class="modal-btn iptal">İptal</button>
             </div>
         </div>
     </div>
